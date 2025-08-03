@@ -4,15 +4,16 @@ import java.time.Month;
 import java.util.ArrayList;
 
 public class ExpenseMonth {
-    private enum Months {JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC};
+    private final Month month;
     private final ArrayList<ExpenseDay> expenseDays;
 
     public ExpenseMonth(Month month) {
+        this.month = month;
         this.expenseDays = new ArrayList<>();
     }
 
-    public String getExpenseMonth() {
-        return Months.valueOf(expenseDays.getFirst().getExpenseMonth()).toString();
+    public Month getMonth() {
+        return month;
     }
 
     public ArrayList<ExpenseDay> getExpenseDays() {
@@ -21,5 +22,13 @@ public class ExpenseMonth {
 
     public void addExpenseDay(ExpenseDay expenseDay) {
         expenseDays.add(expenseDay);
+    }
+
+    @Override
+    public String toString() {
+        return "ExpenseMonth{" +
+                "Month=" + month +
+                ", number of expense days=" + expenseDays.size() +
+                "}";
     }
 }

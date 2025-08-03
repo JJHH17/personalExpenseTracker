@@ -1,18 +1,18 @@
 package personalExpenseApp;
 
+import java.time.Month;
 import java.util.ArrayList;
 
 public class ExpenseMonth {
-    private final String expenseMonth;
-    private ArrayList<ExpenseDay> expenseDays;
+    private enum Months {JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC};
+    private final ArrayList<ExpenseDay> expenseDays;
 
-    public ExpenseMonth(String expenseMonth) {
-        this.expenseMonth = expenseMonth;
+    public ExpenseMonth(Month month) {
         this.expenseDays = new ArrayList<>();
     }
 
     public String getExpenseMonth() {
-        return expenseMonth;
+        return Months.valueOf(expenseDays.getFirst().getExpenseMonth()).toString();
     }
 
     public ArrayList<ExpenseDay> getExpenseDays() {

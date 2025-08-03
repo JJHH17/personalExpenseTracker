@@ -17,10 +17,6 @@ public class UserInterface {
         }
     }
 
-    public Map<Month, ExpenseMonth> getExpenseMonths() {
-        return expenseMonths;
-    }
-
     public void startApp() {
         System.out.println("Welcome to Personal Expense Tracker");
         boolean active = true;
@@ -93,6 +89,61 @@ public class UserInterface {
                             System.out.println("Invalid month entered");
                             break;
                     }
+                    break;
+
+                case 2:
+                    System.out.println("Please enter the expense name");
+                    String expenseName = scanner.nextLine();
+                    System.out.println("Please enter the expense amount");
+                    double expenseAmount = scanner.nextDouble();
+                    scanner.nextLine(); // Used to clear the scanner buffer
+                    System.out.println("Please enter the expense date (day/month)");
+                    String expenseDate = scanner.nextLine();
+                    System.out.println("Please enter the expense category");
+                    String expenseCategory = scanner.nextLine();
+                    System.out.println("Please enter the expense notes");
+                    String expenseNotes = scanner.nextLine();
+
+                    Expenses newExpense = new Expenses(expenseName, expenseAmount, expenseDate, expenseCategory, expenseNotes);
+
+                    Month expenseMonth = null;
+                    if (expenseDate.toLowerCase().contains("jan")) {
+                        expenseMonth = Month.JANUARY;
+                    } else if (expenseDate.toLowerCase().contains("feb")) {
+                        expenseMonth = Month.FEBRUARY;
+                    } else if (expenseDate.toLowerCase().contains("mar")) {
+                        expenseMonth = Month.MARCH;
+                    } else if (expenseDate.toLowerCase().contains("apr")) {
+                        expenseMonth = Month.APRIL;
+                    } else if (expenseDate.toLowerCase().contains("may")) {
+                        expenseMonth = Month.MAY;
+                    } else if (expenseDate.toLowerCase().contains("jun")) {
+                        expenseMonth = Month.JUNE;
+                    } else if (expenseDate.toLowerCase().contains("jul")) {
+                        expenseMonth = Month.JULY;
+                    } else if (expenseDate.toLowerCase().contains("aug")) {
+                        expenseMonth = Month.AUGUST;
+                    } else if (expenseDate.toLowerCase().contains("sep")) {
+                        expenseMonth = Month.SEPTEMBER;
+                    } else if (expenseDate.toLowerCase().contains("oct")) {
+                        expenseMonth = Month.OCTOBER;
+                    } else if (expenseDate.toLowerCase().contains("nov")) {
+                        expenseMonth = Month.NOVEMBER;
+                    } else if (expenseDate.toLowerCase().contains("dec")) {
+                        expenseMonth = Month.DECEMBER;
+                    }
+
+                    if (expenseMonth != null) {
+                        ExpenseMonth monthObject = expenseMonths.get(expenseMonth);
+                        ExpenseDay expenseDay = new ExpenseDay(expenseDate.split("/")[0], expenseDate.split("/")[1], expenseDate.split("/")[2]);
+                        expenseDay.addExpense(newExpense);
+                        monthObject.addExpenseDay(expenseDay);
+                        expenseMonths.put(expenseMonth, monthObject);
+                        System.out.println("Expense added successfully");
+                    } else {
+                        System.out.println("Invalid date entered");
+                    }
+                    break;
             }
         }
     }

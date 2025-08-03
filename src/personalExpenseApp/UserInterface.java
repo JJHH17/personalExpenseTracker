@@ -92,6 +92,7 @@ public class UserInterface {
                     break;
 
                 case 2:
+                    scanner.nextLine();
                     System.out.println("Please enter the expense name");
                     String expenseName = scanner.nextLine();
                     System.out.println("Please enter the expense amount");
@@ -135,7 +136,7 @@ public class UserInterface {
 
                     if (expenseMonth != null) {
                         ExpenseMonth monthObject = expenseMonths.get(expenseMonth);
-                        ExpenseDay expenseDay = new ExpenseDay(expenseDate.split("/")[0], expenseDate.split("/")[1], expenseDate.split("/")[2]);
+                        ExpenseDay expenseDay = new ExpenseDay(expenseDate.split("/")[0], expenseDate.split("/")[1]);
                         expenseDay.addExpense(newExpense);
                         monthObject.addExpenseDay(expenseDay);
                         expenseMonths.put(expenseMonth, monthObject);
@@ -143,6 +144,10 @@ public class UserInterface {
                     } else {
                         System.out.println("Invalid date entered");
                     }
+                    break;
+
+                case 3:
+                    active = false;
                     break;
             }
         }

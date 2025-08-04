@@ -31,4 +31,15 @@ public class ExpenseMonth {
                 ", number of expense days=" + expenseDays.size() +
                 "}";
     }
+
+    /** Used to provide more in-depth return of expenses */
+    public String getMonthExpenses() {
+        ArrayList<ExpenseDay> monthExpenses = new ArrayList<>();
+        for (ExpenseDay expenseDay : expenseDays) {
+            if (expenseDay.getExpenseTotal() > 0) {
+                monthExpenses.add(expenseDay);
+            }
+        }
+        return monthExpenses.toString();
+    }
 }

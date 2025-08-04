@@ -14,16 +14,20 @@ public class ExpenseDay {
         this.expenses = new ArrayList<>();
     }
 
-    public String getExpenseDay() {
-        return expenseDay;
+    public String getExpenseNotes() {
+        String notes = "";
+        for (Expenses expense : expenses) {
+            notes += expense.getExpenseNotes() + "\n";
+        }
+        return notes;
     }
 
-    public String getExpenseMonth() {
-        return expenseMonth;
-    }
-
-    public ArrayList<Expenses> getExpenses() {
-        return expenses;
+    public String getExpenseCategory() {
+        String category = "";
+        for (Expenses expense : expenses) {
+            category += expense.getExpenseCategory() + "\n";
+        }
+        return category;
     }
 
     public double getExpenseTotal() {
@@ -39,6 +43,8 @@ public class ExpenseDay {
     public String toString() {
         return "Day = " + expenseDay +
                 ", Month = " + expenseMonth +
+                ", Expense Note = " + getExpenseNotes() +
+                ", Expense Category = " + getExpenseCategory() +
                 ", expense total = " + expenseTotal +
                 '}';
     }

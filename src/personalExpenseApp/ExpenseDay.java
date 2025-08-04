@@ -39,7 +39,6 @@ public class ExpenseDay {
     public String toString() {
         return "Day = " + expenseDay +
                 ", Month = " + expenseMonth +
-                ", number of expenses = " + expenses.size() +
                 ", expense total = " + expenseTotal +
                 '}';
     }

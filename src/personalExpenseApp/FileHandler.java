@@ -24,13 +24,11 @@ public class FileHandler {
     }
 
     /** Method for writing to a given file */
+    /** Method for writing to a given file */
     public static void fileWriter(String fileContents) {
-        try {
-            File file = new File("personalExpenseApp.txt");
-            file.createNewFile();
-            FileWriter fileWriter = new FileWriter(file);
+        try (FileWriter fileWriter = new FileWriter("personalExpenseApp.txt", true)) {
             fileWriter.write(fileContents);
-            fileWriter.close();
+            fileWriter.write(System.lineSeparator());
             System.out.println("File written successfully");
 
         } catch (IOException e) {

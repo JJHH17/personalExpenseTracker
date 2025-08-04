@@ -39,10 +39,12 @@ public class UserInterface {
 
                         case "JAN":
                             System.out.println(expenseMonths.get(Month.JANUARY));
+                            System.out.println(expenseMonths.get(Month.JANUARY).getMonthExpenses());
                             break;
 
                         case "FEB":
                             System.out.println(expenseMonths.get(Month.FEBRUARY));
+                            System.out.println(expenseMonths.get(Month.FEBRUARY).getMonthExpenses());
                             break;
 
                         case "MAR":

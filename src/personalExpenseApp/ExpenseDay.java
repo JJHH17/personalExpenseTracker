@@ -34,4 +34,13 @@ public class ExpenseDay {
         expenses.add(expense);
         expenseTotal += expense.getExpenseAmount();
     }
+
+    @Override
+    public String toString() {
+        return "Day = " + expenseDay +
+                ", Month = " + expenseMonth +
+                ", number of expenses = " + expenses.size() +
+                ", expense total = " + expenseTotal +
+                '}';
+    }
 }

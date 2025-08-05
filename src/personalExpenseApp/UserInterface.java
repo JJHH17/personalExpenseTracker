@@ -55,7 +55,7 @@ public class UserInterface {
                     System.out.println("Enter the expense amount");
                     Double amount = scanner.nextDouble();
                     System.out.println("Enter the expense category");
-                    scanner.next();
+                    scanner.nextLine();
                     String category = scanner.nextLine();
                     System.out.println("Enter any expense notes");
                     String notes = scanner.nextLine();
@@ -100,6 +100,10 @@ public class UserInterface {
                     switch (monthInput.toLowerCase()) {
                         case "january":
                             System.out.println(January);
+                            break;
+
+                        case "feburary":
+                            System.out.println(February);
                             break;
                 }
                     break;

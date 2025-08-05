@@ -3,6 +3,8 @@ package personalExpenseApp;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class FileHandler {
 
@@ -34,5 +36,11 @@ public class FileHandler {
             System.out.println("An error occurred when writing to the file");
             e.printStackTrace();
         }
+    }
+
+    /** Method for reading from the given file */
+    public static ArrayList<Expenses> fileReader(String month) {
+        // Feeds back to an ArrayList
+        return null;
     }
 }

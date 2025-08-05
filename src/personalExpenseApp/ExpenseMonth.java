@@ -9,6 +9,10 @@ public class ExpenseMonth {
         this.expenses = new ArrayList<>();
     }
 
+    public void addEntry(Expenses expense) {
+        expenses.add(expense);
+    }
+
     @Override
     public String toString() {
         String response = "";

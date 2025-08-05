@@ -34,4 +34,10 @@ public class Expenses {
     public String getExpenseName() {
         return expenseName;
     }
+
+    @Override
+    public String toString() {
+        return "Expense Name: " + getExpenseName() + " Amount: " + getExpenseAmount() + " Category: " + getExpenseCategory() +
+                " Notes: " + getExpenseNotes();
+    }
 }

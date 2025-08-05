@@ -24,7 +24,6 @@ public class FileHandler {
     }
 
     /** Method for writing to a given file */
-    /** Method for writing to a given file */
     public static void fileWriter(String fileContents) {
         try (FileWriter fileWriter = new FileWriter("personalExpenseApp.txt", true)) {
             fileWriter.write(fileContents);

@@ -11,6 +11,7 @@ public class ExpenseMonth {
 
     public void addEntry(Expenses expense) {
         expenses.add(expense);
+        FileHandler.fileWriter(expense.toString());
     }
 
     @Override

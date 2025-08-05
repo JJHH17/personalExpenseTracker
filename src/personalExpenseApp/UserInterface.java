@@ -34,4 +34,72 @@ public class UserInterface {
         December = new ExpenseMonth();
 
     }
+
+    public void start() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Welcome to the Expense Tracker!");
+        boolean active = true;
+
+        // Main program loop
+        while (active) {
+            System.out.println("1. Add an expense\n2. View all Expenses\n3. Quit");
+            int userChoice = scanner.nextInt();
+
+            switch (userChoice) {
+                case 1:
+                    System.out.println("Enter the current month");
+                    String month = scanner.next();
+                    System.out.println("Enter an expense name");
+                    String expenseName = scanner.nextLine();
+                    System.out.println("Enter the expense amount");
+                    Double amount = scanner.nextDouble();
+                    System.out.println("Enter the expense category");
+                    String category = scanner.nextLine();
+                    System.out.println("Enter any expense notes");
+                    String notes = scanner.nextLine();
+
+                    // Creating an object
+                    Expenses entry = new Expenses(expenseName, amount, month, category, notes);
+
+                    // Adding to relevant month
+                    if (month.equalsIgnoreCase("january")) {
+                        January.addEntry(entry);
+                    } else if (month.equalsIgnoreCase("february")) {
+                        February.addEntry(entry);
+                    } else if (month.equalsIgnoreCase("march")) {
+                        March.addEntry(entry);
+                    } else if (month.equalsIgnoreCase("april")) {
+                        April.addEntry(entry);
+                    } else if (month.equalsIgnoreCase("may")) {
+                        May.addEntry(entry);
+                    } else if (month.equalsIgnoreCase("june")) {
+                        June.addEntry(entry);
+                    } else if (month.equalsIgnoreCase("july")) {
+                        July.addEntry(entry);
+                    } else if (month.equalsIgnoreCase("august")) {
+                        August.addEntry(entry);
+                    } else if (month.equalsIgnoreCase("september")) {
+                        September.addEntry(entry);
+                    } else if (month.equalsIgnoreCase("october")) {
+                        October.addEntry(entry);
+                    } else if (month.equalsIgnoreCase("november")) {
+                        November.addEntry(entry);
+                    } else if (month.equalsIgnoreCase("december")) {
+                        December.addEntry(entry);
+                    }
+
+                    System.out.println("Entry has been added!");
+                    break;
+
+                case 2:
+                    System.out.println("Hello");
+                    break;
+
+                case 3:
+                    System.out.println("Exiting");
+                    active = false;
+                    break;
+            }
+        }
+    }
 }

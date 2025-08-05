@@ -7,9 +7,9 @@ import java.io.IOException;
 public class FileHandler {
 
     /** Method that validates whether a file exists or not, and creates it if not */
-    public static void fileCreator() {
+    public static void fileCreator(String month) {
         try {
-            File file = new File("personalExpenseApp.txt");
+            File file = new File("./files/" + month + ".txt");
             // Checking whether the file exists or not
             if (file.createNewFile()) {
                 System.out.println("File created: " + file.getName());
@@ -24,8 +24,8 @@ public class FileHandler {
     }
 
     /** Method for writing to a given file */
-    public static void fileWriter(String fileContents) {
-        try (FileWriter fileWriter = new FileWriter("personalExpenseApp.txt", true)) {
+    public static void fileWriter(String fileContents, String month) {
+        try (FileWriter fileWriter = new FileWriter("./files/" + month + ".txt", true)) {
             fileWriter.write(fileContents);
             fileWriter.write(System.lineSeparator());
             System.out.println("File written successfully");

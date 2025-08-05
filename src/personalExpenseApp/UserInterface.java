@@ -1,8 +1,5 @@
 package personalExpenseApp;
 
-import java.time.Month;
-import java.util.EnumMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -102,7 +99,7 @@ public class UserInterface {
                             System.out.println(January);
                             break;
 
-                        case "feburary":
+                        case "february":
                             System.out.println(February);
                             break;
                 }

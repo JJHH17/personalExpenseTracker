@@ -10,7 +10,7 @@ public class Expenses {
     public Expenses(String expenseName, double expenseAmount, String expenseMonth, String expenseCategory, String expenseNotes) {
         this.expenseName = expenseName;
         this.expenseAmount = expenseAmount;
-        this.expenseMonth = expenseMonth;
+        this.expenseMonth = expenseMonth.toLowerCase();
         this.expenseCategory = expenseCategory;
         this.expenseNotes = expenseNotes;
     }

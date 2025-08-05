@@ -3,7 +3,7 @@ package personalExpenseApp;
 import java.util.ArrayList;
 
 public class ExpenseMonth {
-    private ArrayList<Expenses> expenses;
+    private final ArrayList<Expenses> expenses;
 
     public ExpenseMonth() {
         this.expenses = new ArrayList<>();
@@ -15,12 +15,15 @@ public class ExpenseMonth {
 
     @Override
     public String toString() {
-        String response = "";
+        StringBuilder response = new StringBuilder();
 
         for (Expenses expense : expenses) {
-            response += expense ;
+            response.append("Expense Name: ").append(expense.getExpenseName()).append("\n");
+            response.append("Amount: ").append(expense.getExpenseAmount()).append("\n");
+            response.append("Category: ").append(expense.getExpenseCategory()).append("\n");
+            response.append("Notes: ").append(expense.getExpenseNotes()).append("\n");
         }
 
-        return response;
+        return response.toString();
     }
 }

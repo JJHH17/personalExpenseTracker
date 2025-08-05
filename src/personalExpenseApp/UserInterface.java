@@ -50,10 +50,12 @@ public class UserInterface {
                     System.out.println("Enter the current month");
                     String month = scanner.next();
                     System.out.println("Enter an expense name");
+                    scanner.next(); // moving the cursor
                     String expenseName = scanner.nextLine();
                     System.out.println("Enter the expense amount");
                     Double amount = scanner.nextDouble();
                     System.out.println("Enter the expense category");
+                    scanner.next();
                     String category = scanner.nextLine();
                     System.out.println("Enter any expense notes");
                     String notes = scanner.nextLine();

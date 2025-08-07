@@ -39,7 +39,7 @@ public class FileHandler {
     }
 
     /** Method for reading from the given file */
-    public static ArrayList<Expenses> fileReader(String month) {
+    public ArrayList<Expenses> fileReader(String month) {
         // Feeds back to an ArrayList
         ArrayList<Expenses> fileData = new ArrayList<>();
         try {
@@ -50,14 +50,14 @@ public class FileHandler {
                 String line = scanner.nextLine();
                 String[] parts = line.split(",");
                 if (parts.length == 4) {
-                    String name = parts[0].trim();
-                    double amount = Double.parseDouble(parts[1].trim());
-                    String category = parts[2].trim();
-                    String notes = parts[3].trim();
+                    String name = parts[0].replace("Expense Name:", "").trim();
+                    double amount = Double.parseDouble(parts[1].replace("Amount:", "").trim());
+                    String category = parts[2].replace("Category:", "").trim();
+                    String notes = parts[3].replace("Notes:", "").trim();
 
                     // Constructing an Expenses object from this data.
                     Expenses expense = new Expenses(name, amount, month, category, notes);
-                    fileData.add(expense);
+                    fileData.add(expense); // Adds to our local file
                 }
             }
             scanner.close();

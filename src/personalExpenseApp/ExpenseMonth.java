@@ -19,10 +19,10 @@ public class ExpenseMonth {
         StringBuilder response = new StringBuilder();
 
         for (Expenses expense : expenses) {
-            response.append("Expense Name: ").append(expense.getExpenseName()).append(" ");
-            response.append("Amount: ").append(expense.getExpenseAmount()).append(" ");
-            response.append("Category: ").append(expense.getExpenseCategory()).append(" ");
-            response.append("Notes: ").append(expense.getExpenseNotes()).append("\n");
+            response.append("Expense Name: ").append(expense.getExpenseName()).append(",");
+            response.append("Amount: ").append(expense.getExpenseAmount()).append(",");
+            response.append("Category: ").append(expense.getExpenseCategory()).append(",");
+            response.append("Notes: ").append(expense.getExpenseNotes()).append(" \n");
         }
 
         return response.toString();

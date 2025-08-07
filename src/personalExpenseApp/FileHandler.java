@@ -41,6 +41,32 @@ public class FileHandler {
     /** Method for reading from the given file */
     public static ArrayList<Expenses> fileReader(String month) {
         // Feeds back to an ArrayList
-        return null;
+        ArrayList<Expenses> fileData = new ArrayList<>();
+        try {
+            File file = new File("./files/" + month + ".txt");
+            Scanner scanner = new Scanner(file);
+
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] parts = line.split(",");
+                if (parts.length == 4) {
+                    String name = parts[0].trim();
+                    double amount = Double.parseDouble(parts[1].trim());
+                    String category = parts[2].trim();
+                    String notes = parts[3].trim();
+
+                    // Constructing an Expenses object from this data.
+                    Expenses expense = new Expenses(name, amount, month, category, notes);
+                    fileData.add(expense);
+                }
+            }
+            scanner.close();
+
+        } catch (IOException e) {
+            System.out.println("An error occurred when reading from the expenses file.");
+            e.printStackTrace();
+        }
+
+        return fileData;
     }
 }

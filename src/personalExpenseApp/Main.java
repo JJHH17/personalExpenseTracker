@@ -26,7 +26,12 @@ public class Main extends Application {
         Label addExpenseLabel = new Label("Add new Expense");
         Button addExpenseButton = new Button("Add new Expense");
 
-        layout.getChildren().addAll(title);
+        layout.getChildren().addAll(title, addExpenseLabel, addExpenseButton);
+
+        // Button handling
+        addExpenseButton.setOnAction(e -> {
+            addExpense(primaryStage);
+        });
 
         Scene scene = new Scene(layout, 300, 250);
         primaryStage.setScene(scene);
@@ -39,7 +44,7 @@ public class Main extends Application {
     }
 
     /** Method used for adding new expenses page */
-    public static void addExpense() {
+    public void addExpense(Stage primaryStage) {
         Label title = new Label("Add Expense");
         VBox layout = new VBox(10);
 
@@ -70,5 +75,8 @@ public class Main extends Application {
         layout.getChildren().addAll(title, currentMonthLabel, currentMonth, expenseNameLabel, expenseName, expenseAmountLabel,
                 expenseAmount, expenseCategoryLabel, expenseCategory, expenseNotesLabel, expenseNotes, submit, cancel);
 
+        // Used to display and load page when user navigates here
+        Scene scene = new Scene(layout, 300, 250);
+        primaryStage.setScene(scene);
     }
 }

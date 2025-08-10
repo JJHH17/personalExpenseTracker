@@ -97,6 +97,23 @@ public class Main extends Application {
         submit.setOnAction( e-> {
             Expenses newEntry = new Expenses(expenseName.getText(), Double.parseDouble(expenseAmount.getText()), currentMonth.getValue(),
                     expenseCategory.getText(), expenseNotes.getText());
+
+            // Parsing month selected into relevant expense month
+            switch (currentMonth.getValue()) {
+                case "January" -> January.addEntry(newEntry);
+                case "February" -> February.addEntry(newEntry);
+                case "March" -> March.addEntry(newEntry);
+                case "April" -> April.addEntry(newEntry);
+                case "May" -> May.addEntry(newEntry);
+                case "June" -> June.addEntry(newEntry);
+                case "July" -> July.addEntry(newEntry);
+                case "August" -> August.addEntry(newEntry);
+                case "September" -> September.addEntry(newEntry);
+                case "October" -> October.addEntry(newEntry);
+                case "November" -> November.addEntry(newEntry);
+                case "December" -> December.addEntry(newEntry);
+            }
+
         });
 
         // Cancel/Quit button

@@ -10,10 +10,36 @@ import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
 public class Main extends Application {
+    private final ExpenseMonth January;
+    private final ExpenseMonth February;
+    private final ExpenseMonth March;
+    private final ExpenseMonth April;
+    private final ExpenseMonth May;
+    private final ExpenseMonth June;
+    private final ExpenseMonth July;
+    private final ExpenseMonth August;
+    private final ExpenseMonth September;
+    private final ExpenseMonth October;
+    private final ExpenseMonth November;
+    private final ExpenseMonth December;
+
     public static void main(String[] args) {
-//        UserInterface userInterface = new UserInterface();
-//        userInterface.start();
         launcher();
+    }
+
+    public Main() {
+        January = new ExpenseMonth();
+        February = new ExpenseMonth();
+        March = new ExpenseMonth();
+        April = new ExpenseMonth();
+        May = new ExpenseMonth();
+        June = new ExpenseMonth();
+        July = new ExpenseMonth();
+        August = new ExpenseMonth();
+        September = new ExpenseMonth();
+        October = new ExpenseMonth();
+        November = new ExpenseMonth();
+        December = new ExpenseMonth();
     }
 
     /** Method used for initializing and starting the frontend application */
@@ -66,11 +92,19 @@ public class Main extends Application {
         Label expenseNotesLabel = new Label("Expense Notes");
         TextField expenseNotes = new TextField();
 
-        // Submit Button
+        // Submit Button and creation of expense instance
         Button submit = new Button("Submit");
+        submit.setOnAction( e-> {
+            Expenses newEntry = new Expenses(expenseName.getText(), Double.parseDouble(expenseAmount.getText()), currentMonth.getValue(),
+                    expenseCategory.getText(), expenseNotes.getText());
+        });
 
         // Cancel/Quit button
         Button cancel = new Button("Cancel");
+        cancel.setOnAction( e -> {
+            start(primaryStage);
+            layout.getChildren().clear();
+        });
 
         layout.getChildren().addAll(title, currentMonthLabel, currentMonth, expenseNameLabel, expenseName, expenseAmountLabel,
                 expenseAmount, expenseCategoryLabel, expenseCategory, expenseNotesLabel, expenseNotes, submit, cancel);

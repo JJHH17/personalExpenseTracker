@@ -8,6 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
 
@@ -54,11 +56,19 @@ public class Main extends Application {
         Label addExpenseLabel = new Label("Add new Expense");
         Button addExpenseButton = new Button("Add new Expense");
 
-        layout.getChildren().addAll(title, addExpenseLabel, addExpenseButton);
+        // Allowing user to print a list of expenses for a given month
+        Label printExpensesLabel = new Label("Print Expenses");
+        Button printExpenses = new Button("Print Expenses");
+
+        layout.getChildren().addAll(title, addExpenseLabel, addExpenseButton, printExpensesLabel, printExpenses);
 
         // Button handling
         addExpenseButton.setOnAction(e -> {
             addExpense(primaryStage);
+        });
+
+        printExpenses.setOnAction(e -> {
+            printExpense(primaryStage);
         });
 
         Scene scene = new Scene(layout, 300, 250);
@@ -138,13 +148,48 @@ public class Main extends Application {
         primaryStage.setScene(scene);
     }
 
+    /** Method used for reading expenses from file to the UI */
+    public void printExpense(Stage primaryStage) {
+        Label title = new Label("Print Expenses");
+        VBox layout = new VBox(10);
+
+        // Used for selecting the month you wish to print the expenses of
+        Label expenseMonthLabel = new Label("Select the months expenses you wish to view");
+        ComboBox<String> expenseMonth = new ComboBox<>();
+        expenseMonth.getItems().addAll("January", "February", "March", "April", "May", "June", "July", "August",
+                "September", "October", "November", "December");
+
+        Button submit = new Button("Submit");
+        submit.setOnAction(e -> {
+            if (expenseMonth.getValue().equals("January")) {
+                System.out.println(January.returnInfo("january"));
+            }
+        });
+
+        Button cancel = new Button("Cancel");
+        cancel.setOnAction(e -> {
+            start(primaryStage);
+            layout.getChildren().clear();
+        });
+
+        layout.getChildren().addAll(title, expenseMonthLabel, expenseMonth, submit, cancel);
+
+        Scene scene = new Scene(layout, 300, 250);
+        primaryStage.setScene(scene);
+    }
+
+    /** Helper method used for fetching expenses from file into an arraylist */
+    public ArrayList<ExpenseMonth> fetchExpenses(String month) {
+        return null;
+    }
+
     /** Method used for checking if data field is empty or not */
     public static boolean isEmpty(String text) {
         return text.isEmpty();
     }
 
     /** Method used for checking if input is integer (used for expense quantity) or not */
-    public static boolean isInteger(Object input) {
+    public static boolean isDouble(Object input) {
         return input instanceof Double;
     }
 }

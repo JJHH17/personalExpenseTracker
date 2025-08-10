@@ -8,6 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
+import java.util.List;
+import java.util.Arrays;
 
 public class Main extends Application {
     private final ExpenseMonth January;
@@ -114,6 +116,11 @@ public class Main extends Application {
                 case "December" -> December.addEntry(newEntry);
             }
 
+            // Clearing existing data on page
+            List<TextField> fields = Arrays.asList(expenseName, expenseAmount, expenseCategory, expenseNotes);
+            for (TextField field : fields) {
+                field.clear();
+            }
         });
 
         // Cancel/Quit button

@@ -137,4 +137,14 @@ public class Main extends Application {
         Scene scene = new Scene(layout, 300, 250);
         primaryStage.setScene(scene);
     }
+
+    /** Method used for checking if data field is empty or not */
+    public static boolean isEmpty(String text) {
+        return text.isEmpty();
+    }
+
+    /** Method used for checking if input is integer (used for expense quantity) or not */
+    public static boolean isInteger(Object input) {
+        return input instanceof Double;
+    }
 }

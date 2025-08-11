@@ -161,8 +161,20 @@ public class Main extends Application {
 
         Button submit = new Button("Submit");
         submit.setOnAction(e -> {
-            if (expenseMonth.getValue().equals("January")) {
-                System.out.println(January.returnInfo("january"));
+            switch (expenseMonth.getValue()) {
+                case ("January") -> printExpense(January, "january", layout, expenseMonthLabel, expenseMonth, submit);
+                case ("February") -> printExpense(February, "february", layout, expenseMonthLabel, expenseMonth, submit);
+                case ("March") -> printExpense(March, "march", layout, expenseMonthLabel, expenseMonth, submit);
+                case ("April") -> printExpense(April, "april", layout, expenseMonthLabel, expenseMonth, submit);
+                case ("May") -> printExpense(May, "may", layout, expenseMonthLabel, expenseMonth, submit);
+                case ("June") -> printExpense(June, "june", layout, expenseMonthLabel, expenseMonth, submit);
+                case ("July") -> printExpense(July, "july", layout, expenseMonthLabel, expenseMonth, submit);
+                case ("August") -> printExpense(August, "august", layout, expenseMonthLabel, expenseMonth, submit);
+                case ("September") -> printExpense(September, "september", layout, expenseMonthLabel, expenseMonth, submit);
+                case ("October") -> printExpense(October, "october", layout, expenseMonthLabel, expenseMonth, submit);
+                case ("November") -> printExpense(November, "november", layout, expenseMonthLabel, expenseMonth, submit);
+                case ("December") -> printExpense(December, "december", layout, expenseMonthLabel, expenseMonth, submit);
+
             }
         });
 
@@ -178,18 +190,19 @@ public class Main extends Application {
         primaryStage.setScene(scene);
     }
 
-    /** Helper method used for fetching expenses from file into an arraylist */
-    public ArrayList<ExpenseMonth> fetchExpenses(String month) {
-        return null;
-    }
+    /** Method used as a helper for printing expenses to UI */
+    private void printExpense(ExpenseMonth expenseMonth, String month, VBox layout, Label expenseMonthLabel, ComboBox expenseMonthBox,
+                              Button submit) {
+        // Creates and sets a new Label for UI
+        Label output = new Label();
+        output.setText(expenseMonth.returnInfo(month));
 
-    /** Method used for checking if data field is empty or not */
-    public static boolean isEmpty(String text) {
-        return text.isEmpty();
-    }
+        // Adds to the relevant layout of the page
+        layout.getChildren().addAll(output);
 
-    /** Method used for checking if input is integer (used for expense quantity) or not */
-    public static boolean isDouble(Object input) {
-        return input instanceof Double;
+        // Removing the "Submit" button and other components when these are printed
+        layout.getChildren().remove(expenseMonthLabel);
+        layout.getChildren().remove(expenseMonthBox);
+        layout.getChildren().remove(submit);
     }
 }
